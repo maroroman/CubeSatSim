@@ -147,3 +147,5 @@ def main():
         comms = comms.__enter__()
         print(comms.transcieve(receive))
         comms.close()
+
+main()
