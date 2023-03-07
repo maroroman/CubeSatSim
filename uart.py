@@ -137,7 +137,7 @@ class UARTComms:
     
 def main():
     if len(sys.argv) == 1:
-        comms = UARTComms("/dev/ttyACM3")
+        comms = UARTComms("/dev/tty")
     else:
         comms = UARTComms(sys.argv[1])
     
