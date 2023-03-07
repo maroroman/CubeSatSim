@@ -141,17 +141,16 @@ def main():
     else:
         comms = UARTComms(sys.argv[1])
 
-    comms = comms.__enter__()
-    print(comms.transcieve("get light 1"))
-    comms.close()
-
     while True:
-        receive = input()
-        if (receive == "exit"):
-            break
-        else:
-            comms = comms.__enter__()
-            print(comms.transcieve(receive))
-            comms.close()
+        comms = comms.__enter__()
+        print("light 1: " + comms.transcieve("get light 1"))
+        comms.close()
+        comms = comms.__enter__()
+        print("light 2: " + comms.transcieve("get light 1"))
+        comms.close()
+        comms = comms.__enter__()
+        print("temp: " + comms.transcieve("get temp"))
+        comms.close()
+
 
 main()
