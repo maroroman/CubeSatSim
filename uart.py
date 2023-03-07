@@ -140,12 +140,14 @@ def main():
         comms = UARTComms("/dev/tty")
     else:
         comms = UARTComms(sys.argv[1])
-    
-    receive = ""
-    while (receive != "exit"):
+
+    while True:
         receive = input()
-        comms = comms.__enter__()
-        print(comms.transcieve(receive))
-        comms.close()
+        if (receive == "exit"):
+            break
+        else:
+            comms = comms.__enter__()
+            print(comms.transcieve(receive))
+            comms.close()
 
 main()
