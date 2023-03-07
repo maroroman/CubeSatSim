@@ -1,4 +1,5 @@
 import serial
+import sys
 
 #
 # Author: Jiří Squirrel
@@ -133,3 +134,16 @@ class UARTComms:
             i+= 1
 
         return lines
+    
+def main():
+    if len(sys.argv) == 1:
+        comms = UARTComms("/dev/ttyACM3")
+    else:
+        comms = UARTComms(sys.argv[1])
+    
+    receive = ""
+    while (receive != "exit"):
+        receive = input()
+        comms = comms.__enter__()
+        print(comms.transcieve(receive))
+        comms.close()
